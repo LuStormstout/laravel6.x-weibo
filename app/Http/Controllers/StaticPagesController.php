@@ -3,13 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 
 class StaticPagesController extends Controller
 {
     /**
      * 首页
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @return Factory|View
      */
     public function home()
     {
@@ -18,7 +20,7 @@ class StaticPagesController extends Controller
 
     /**
      * 帮助
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @return Factory|View
      */
     public function help()
     {
@@ -27,7 +29,7 @@ class StaticPagesController extends Controller
 
     /**
      * 关于
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @return Factory|View
      */
     public function about()
     {
