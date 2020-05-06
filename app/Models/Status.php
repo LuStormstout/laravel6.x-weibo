@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo as BelongsToAlias;
 
 class Status extends Model
 {
+    protected $fillable = ['content'];
+
     /**
      * 一条微博属于一个用户
      * @return BelongsToAlias
