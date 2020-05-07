@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany as BelongsToManyAlias;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -84,11 +83,15 @@ class User extends Authenticatable
     }
 
     /**
-     * @return HasMany
+     * 获取关注用户和自己的微博列表
+     * @return mixed
      */
     public function feed()
     {
-        return $this->statuses()
+        $user_ids = $this->followings->pluck('id')->toArray();
+        array_push($user_ids, $this->id);
+        return Status::whereIn('user_id', $user_ids)
+            ->with('user')
             ->orderBy('created_at', 'desc');
     }
 
